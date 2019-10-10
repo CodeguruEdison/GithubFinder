@@ -26,12 +26,11 @@ interface AppState {
 
     }
    OnSearchUsers = async text => {
-     // console.log(text);
       this.setState({loading:true});
       const res=  await axios.get(`https://api.github.com/search/users?q=${text}`);
       //console.log(res.data)
       this.setState ({users:res.data.items,loading:false});
-}
+    }
   /*constructor(props) {
     super(props);
     this.state = {
