@@ -7,6 +7,7 @@ import './style.css';
 import axios from 'axios';
 import Search from './components/users/Search';
 import Alert from './components/layout/alert';
+import { BrowserRouter as Router,Switch,Route } from 'react-dom-router';
 
 interface AppProps { }
 interface AppState {
