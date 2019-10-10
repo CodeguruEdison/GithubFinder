@@ -6,6 +6,7 @@ import Users from './components/users/users';
 import './style.css';
 import axios from 'axios';
 import Search from './components/users/Search';
+import Alert from './components/layout/alert';
 
 interface AppProps { }
 interface AppState {
@@ -16,7 +17,8 @@ interface AppState {
   class App extends Component {
   state = {
     users:[],
-    loading:false
+    loading:false,
+    alert:null
   }
    /*async componentDidMount(){
       this.setState({loading:true});
@@ -34,6 +36,10 @@ interface AppState {
     OnClearUsers = () => {
        this.setState({users:[],loading:false});
     }
+    setAlert =(msg,type) =>{
+       this.setState({alert:{msg, type }});
+       setTimeout( () => this.setState({alert:null}),5000);
+    }
   /*constructor(props) {
     super(props);
     this.state = {
@@ -42,13 +48,15 @@ interface AppState {
   }*/
 
   render() {
+    const {users,loading} = this.state;
     return (
       <div>
        
         <Navbar></Navbar>
          <div className="container">
-          <Search OnSearchUsers={this.OnSearchUsers} OnClearUsers={this.OnClearUsers}     showClear={this.state.users.length>0 ? true: false} />
-          <Users users={this.state.users} loading={this.state.loading} ></Users>
+         <Alert alert={this.state.alert}/>
+          <Search OnSearchUsers={this.OnSearchUsers} OnClearUsers={this.OnClearUsers}     showClear={users.length>0 ? true: false} setAlert={this.setAlert} />
+          <Users users={users} loading={loading} ></Users>
         </div>
       </div>
     );
