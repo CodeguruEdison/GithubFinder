@@ -25,6 +25,10 @@ interface AppState {
       this.setState ({users:res.data,loading:false});
 
     }
+   searchUsers = (text) => {
+      console.log(text);
+
+   }
   /*constructor(props) {
     super(props);
     this.state = {
@@ -38,7 +42,7 @@ interface AppState {
        
         <Navbar></Navbar>
          <div className="container">
-          <Search/>
+          <Search searchUsers={this.searchUsers}/>
           <Users users={this.state.users} loading={this.state.loading} ></Users>
         </div>
       </div>

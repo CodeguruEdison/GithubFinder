@@ -9,7 +9,8 @@ export class Search extends Component {
  }
  onSubmit = e => {
     e.preventDefault();
-    this.props.searchuser =
+    this.props.searchUser(this.state.text);
+    this.setState({text:''});
  } 
   render() {
     return (
