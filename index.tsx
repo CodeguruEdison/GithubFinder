@@ -18,17 +18,20 @@ interface AppState {
     users:[],
     loading:false
   }
-    async componentDidMount(){
+   async componentDidMount(){
       this.setState({loading:true});
       const res=  await axios.get('https://api.github.com/users');
       console.log(res.data)
       this.setState ({users:res.data,loading:false});
 
     }
-   searchUsers = (text) => {
-      console.log(text);
-
-   }
+   OnSearchUsers = async text => {
+     // console.log(text);
+      this.setState({loading:true});
+      const res=  await axios.get(`https://api.github.com/search/users?q=${text}`);
+      //console.log(res.data)
+      this.setState ({users:res.data.items,loading:false});
+}
   /*constructor(props) {
     super(props);
     this.state = {
@@ -42,7 +45,7 @@ interface AppState {
        
         <Navbar></Navbar>
          <div className="container">
-          <Search searchUsers={this.searchUsers}/>
+          <Search OnSearchUsers={this.OnSearchUsers}/>
           <Users users={this.state.users} loading={this.state.loading} ></Users>
         </div>
       </div>

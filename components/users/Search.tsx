@@ -5,19 +5,20 @@ export class Search extends Component {
     text: ''
   };
  onChange = e => {
-   this.setState({[e.target.name]:e.target.value});
- }
+   this.setState({ [e.target.name] : e.target.value});
+ };
  onSubmit = e => {
+   // console.log(this.state.text);
     e.preventDefault();
-    this.props.searchUser(this.state.text);
-    this.setState({text:''});
- } 
+    this.props.OnSearchUsers(this.state.text);
+   this.setState({text:''});
+ } ;
   render() {
     return (
       <div>
-         <form className="form">
-           <input type="text" name="text" value = {this.state.text} placeholder="Search Users" onChange={this.onChange}/>
-           <input type="Submit" value="Search" onSubmit={this.onSubmit}  className="btn btn-dark btn-block"/>
+         <form className="form" onSubmit={this.onSubmit} >
+           <input type="text" name="text" value = {this.state.text} placeholder="Search Users" onChange = {this.onChange}/>
+           <input type="Submit" value="Search"  className="btn btn-dark btn-block"/>
         </form>
       </div>
     )
