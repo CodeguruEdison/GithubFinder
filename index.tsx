@@ -31,6 +31,9 @@ interface AppState {
       //console.log(res.data)
       this.setState ({users:res.data.items,loading:false});
     }
+    OnClearUsers = () => {
+       this.setState({users:[],loading:false});
+    }
   /*constructor(props) {
     super(props);
     this.state = {
@@ -44,7 +47,7 @@ interface AppState {
        
         <Navbar></Navbar>
          <div className="container">
-          <Search OnSearchUsers={this.OnSearchUsers}/>
+          <Search OnSearchUsers={this.OnSearchUsers} OnClearUsers={this.OnClearUsers}/>
           <Users users={this.state.users} loading={this.state.loading} ></Users>
         </div>
       </div>
