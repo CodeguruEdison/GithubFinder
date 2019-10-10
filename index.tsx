@@ -18,13 +18,13 @@ interface AppState {
     users:[],
     loading:false
   }
-   async componentDidMount(){
+   /*async componentDidMount(){
       this.setState({loading:true});
       const res=  await axios.get('https://api.github.com/users');
       console.log(res.data)
       this.setState ({users:res.data,loading:false});
 
-    }
+    }*/
    OnSearchUsers = async text => {
       this.setState({loading:true});
       const res=  await axios.get(`https://api.github.com/search/users?q=${text}`);
@@ -47,7 +47,7 @@ interface AppState {
        
         <Navbar></Navbar>
          <div className="container">
-          <Search OnSearchUsers={this.OnSearchUsers} OnClearUsers={this.OnClearUsers}/>
+          <Search OnSearchUsers={this.OnSearchUsers} OnClearUsers={this.OnClearUsers}     showClear={this.state.users.length>0 ? true: false} />
           <Users users={this.state.users} loading={this.state.loading} ></Users>
         </div>
       </div>
