@@ -5,6 +5,7 @@ import UserItem from './components/users/useritem';
 import Users from './components/users/users';
 import './style.css';
 import axios from 'axios';
+import Search from './components/users/Search';
 
 interface AppProps { }
 interface AppState {
@@ -37,6 +38,7 @@ interface AppState {
        
         <Navbar></Navbar>
          <div className="container">
+          <Search/>
           <Users users={this.state.users} loading={this.state.loading} ></Users>
         </div>
       </div>
